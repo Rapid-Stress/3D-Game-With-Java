@@ -1,10 +1,8 @@
 package com.verzaii.fizard.core;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-
 import com.verzaii.fizard.graphics.*;
+import com.verzaii.fizard.utils.Line;
+import com.verzaii.fizard.utils.Vector3;
 
 public class Game {
 	
@@ -12,16 +10,21 @@ public class Game {
 	private int windowWidth, windowHeight;
 	private boolean running;
 	
-	private Display display;
-	
-	//TODO: Refactor this!
-	private BufferStrategy bs;
-	private Graphics g;
+	private static Display display;
+	private static Renderer renderer;
 	
 	public Game(String gameTitle, int windowWidth, int windowHeight) {
 		this.gameTitle = gameTitle;
 		this.windowWidth = windowWidth;
 		this.windowHeight = windowHeight;
+	}
+	
+	public static Renderer GetContextRenderer() {
+		return renderer;
+	}
+	
+	public static Display GetActiveDisplay() {
+		return display;
 	}
 	
 	public void start() {
@@ -33,6 +36,7 @@ public class Game {
 	
 	private void init() {
 		display = new Display(gameTitle, windowWidth, windowHeight);
+		renderer = new Renderer(display);
 	}
 	
 	private void run() {
@@ -47,20 +51,26 @@ public class Game {
 	}
 	
 	private void render() {
-		bs = display.getCanvas().getBufferStrategy();
 		
-		if(bs == null) {
-			display.getCanvas().createBufferStrategy(3);
-			return;
-		}
+		//TODO: Remove this testing code!
 		
-		g = bs.getDrawGraphics();
+		Vector3 a = new Vector3(-100f, -100f, 0f);
+		Vector3 b = new Vector3(100f, -100f, 0f);
+		Vector3 c = new Vector3(-100f, 100f, 0f);
+		Vector3 d = new Vector3(100f, 100f, 0f);
 		
-		g.clearRect(0, 0, windowWidth, windowHeight);
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, windowWidth, windowHeight);
+		Line[] lines = new Line[] {
+			new Line(a, b),
+			new Line(b, d),
+			new Line(d, c),
+			new Line(c, a),
+		};
 		
-		bs.show();
-		g.dispose();
+		Mesh mesh = new Mesh(lines);
+		
+		mesh.rotateZ(100f);
+		
+		renderer.addDrawCall(mesh);
+		renderer.renderScreen();
 	}
 }
