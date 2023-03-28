@@ -15,7 +15,7 @@ public class Line {
 		float cos = (float)Math.cos(angle);
 		
 		{
-			Debug.Log(a.x);
+			Debug.Log("Previous Pos: " + a.x + ", " + a.y + ", " + a.z);
 			float newX = -cos * a.x + sin * a.y + 0 * a.z;
 			float newY =  sin * a.x + cos * a.y + 0 * a.z;
 			float newZ =  0   * a.x + 0   * a.y + 1 * a.z;
@@ -23,6 +23,7 @@ public class Line {
 			a.x = newX;
 			a.y = newY;
 			a.z = newZ;
+			Debug.Log("After Pos:    " + a.x + ", " + a.y + ", " + a.z);
 		}
 		
 		{

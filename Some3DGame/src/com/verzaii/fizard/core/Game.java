@@ -13,6 +13,8 @@ public class Game {
 	private static Display display;
 	private static Renderer renderer;
 	
+	private Mesh testingMesh;
+	
 	public Game(String gameTitle, int windowWidth, int windowHeight) {
 		this.gameTitle = gameTitle;
 		this.windowWidth = windowWidth;
@@ -37,20 +39,6 @@ public class Game {
 	private void init() {
 		display = new Display(gameTitle, windowWidth, windowHeight);
 		renderer = new Renderer(display);
-	}
-	
-	private void run() {
-		while(running) {
-			update();
-			render();
-		}
-	}
-	
-	private void update() {
-		
-	}
-	
-	private void render() {
 		
 		//TODO: Remove this testing code!
 		
@@ -61,16 +49,25 @@ public class Game {
 		
 		Line[] lines = new Line[] {
 			new Line(a, b),
-			new Line(b, d),
-			new Line(d, c),
-			new Line(c, a),
 		};
 		
-		Mesh mesh = new Mesh(lines);
-		
-		mesh.rotateZ(100f);
-		
-		renderer.addDrawCall(mesh);
+		testingMesh = new Mesh(lines);
+		testingMesh.rotateZ(50f);
+		testingMesh.rotateZ(50f);
+	}
+	
+	private void run() {
+		while(running) {
+			update();
+			render();
+		}
+	}
+	
+	private void update() {
+	}
+	
+	private void render() {		
+		renderer.addDrawCall(testingMesh);
 		renderer.renderScreen();
 	}
 }
