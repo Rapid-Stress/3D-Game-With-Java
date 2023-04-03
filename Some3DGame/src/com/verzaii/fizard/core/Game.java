@@ -39,7 +39,7 @@ public class Game {
 		display = new Display(gameTitle, windowWidth, windowHeight);
 		renderer = new Renderer(display);
 		
-		testingQuad = new Quad();
+		testingQuad = new Quad(new Vector3(0, 0, 0), new Vector3(50, 100, 0));
 	}
 	
 	private void run() {
@@ -53,7 +53,7 @@ public class Game {
 		
 	}
 	
-	private void render() {		
+	private void render() {
 		renderer.addDrawCall(testingQuad);
 		renderer.renderScreen();
 	}

@@ -14,9 +14,9 @@ public class Mesh {
 		return lines;
 	}
 	
-	public void rotateZ(float angle) {
+	public void rotate(Vector3 amt) {
 		for(Line line : lines) {
-			line.rotateZ(angle);
+			line.rotate(amt);
 		}
 	}
 	

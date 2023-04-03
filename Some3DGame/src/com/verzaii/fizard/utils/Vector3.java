@@ -13,14 +13,14 @@ public class Vector3 {
 	}
 
 	//Constants
-	public static final Vector3 ZERO = new Vector3(0, 0, 0);
-	public static final Vector3 ONE = new Vector3(1, 1, 1);
-	public static final Vector3 UP = new Vector3(0, -1, 0);
-	public static final Vector3 DOWN = new Vector3(0, 1, 0);
-	public static final Vector3 RIGHT = new Vector3(1, 0, 0);
-	public static final Vector3 LEFT = new Vector3(-1, 0, 0);
-	public static final Vector3 FRONT = new Vector3(0, 0, 1);
-	public static final Vector3 BACK = new Vector3(0, 0, -1);
+	public static final Vector3 ZERO  ()  { return new Vector3(0, 0, 0);  }
+	public static final Vector3 ONE   ()  { return new Vector3(1, 1, 1);  }
+	public static final Vector3 UP    ()  { return new Vector3(0, -1, 0); }
+	public static final Vector3 DOWN  ()  { return new Vector3(0, 1, 0);  }
+	public static final Vector3 RIGHT ()  { return new Vector3(1, 0, 0);  }
+	public static final Vector3 LEFT  ()  { return new Vector3(-1, 0, 0); }
+	public static final Vector3 FRONT ()  { return new Vector3(0, 0, 1);  }
+	public static final Vector3 BACK  ()  { return new Vector3(0, 0, -1); }
 	
 	//Member functions
 	public Vector3 copy() {
