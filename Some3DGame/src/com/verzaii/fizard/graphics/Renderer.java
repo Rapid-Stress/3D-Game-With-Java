@@ -14,14 +14,14 @@ public class Renderer {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private ArrayList<Mesh> drawQueue = new ArrayList<Mesh>();
+	private ArrayList<Drawable> drawQueue = new ArrayList<Drawable>();
 	
 	public Renderer(Display target) {
 		this.target = target;
 	}
 	
-	public void addDrawCall(Mesh mesh) {
-		drawQueue.add(mesh);
+	public void addDrawCall(Drawable object) {
+		drawQueue.add(object);
 	}
 	
 	public void renderScreen() {
@@ -31,8 +31,8 @@ public class Renderer {
 		drawBackground();
 		
 		g.setColor(Color.WHITE);
-		for(Mesh mesh : drawQueue) {
-			for(Line line : mesh.getLines()) {
+		for(Drawable object : drawQueue) {
+			for(Line line : object.getMesh().getLines()) {
 				g.drawLine(line.a.getScreenX(), line.a.getScreenY(), line.b.getScreenX(), line.b.getScreenY());
 			}
 		}

@@ -23,6 +23,10 @@ public class Vector3 {
 	public static final Vector3 BACK = new Vector3(0, 0, -1);
 	
 	//Member functions
+	public Vector3 copy() {
+		return new Vector3(x, y, z);
+	}
+	
 	public void add(Vector3 other) {
 		x += other.x;
 		y += other.y;
@@ -48,22 +52,23 @@ public class Vector3 {
 	}
 
 	//Static functions
-	public Vector3 Add(Vector3 a, Vector3 b) {
+	public static Vector3 Add(Vector3 a, Vector3 b) {
 		return new Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
 	}
 	
-	public Vector3 Sub(Vector3 a, Vector3 b) {
+	public static Vector3 Sub(Vector3 a, Vector3 b) {
 		return new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
 	}
 	
-	public Vector3 Mult(Vector3 a, float f) {
+	public static Vector3 Mult(Vector3 a, float f) {
 		return new Vector3(a.x * f, a.y * f, a.z * f);
 	}
 	
-	public Vector3 Div(Vector3 a, float f) {
+	public static Vector3 Div(Vector3 a, float f) {
 		return new Vector3(a.x / f, a.y / f, a.z / f);
 	}
 
+	//Render specific functions
 	public int getScreenX() {
 		return (int) (x + Game.GetActiveDisplay().getWidth() / 2f);
 	}

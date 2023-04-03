@@ -1,8 +1,7 @@
 package com.verzaii.fizard.core;
 
 import com.verzaii.fizard.graphics.*;
-import com.verzaii.fizard.utils.Line;
-import com.verzaii.fizard.utils.Vector3;
+import com.verzaii.fizard.utils.*;
 
 public class Game {
 	
@@ -13,7 +12,7 @@ public class Game {
 	private static Display display;
 	private static Renderer renderer;
 	
-	private Mesh testingMesh;
+	private Quad testingQuad;
 	
 	public Game(String gameTitle, int windowWidth, int windowHeight) {
 		this.gameTitle = gameTitle;
@@ -40,20 +39,7 @@ public class Game {
 		display = new Display(gameTitle, windowWidth, windowHeight);
 		renderer = new Renderer(display);
 		
-		//TODO: Remove this testing code!
-		
-		Vector3 a = new Vector3(-100f, -100f, 0f);
-		Vector3 b = new Vector3(100f, -100f, 0f);
-		Vector3 c = new Vector3(-100f, 100f, 0f);
-		Vector3 d = new Vector3(100f, 100f, 0f);
-		
-		Line[] lines = new Line[] {
-			new Line(a, b),
-		};
-		
-		testingMesh = new Mesh(lines);
-		testingMesh.rotateZ(50f);
-		testingMesh.rotateZ(50f);
+		testingQuad = new Quad();
 	}
 	
 	private void run() {
@@ -64,10 +50,11 @@ public class Game {
 	}
 	
 	private void update() {
+		
 	}
 	
 	private void render() {		
-		renderer.addDrawCall(testingMesh);
+		renderer.addDrawCall(testingQuad);
 		renderer.renderScreen();
 	}
 }

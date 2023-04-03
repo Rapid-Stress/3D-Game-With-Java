@@ -19,4 +19,10 @@ public class Mesh {
 			line.rotateZ(angle);
 		}
 	}
+	
+	public void move(Vector3 amt) {
+		for(Line line : lines) {
+			line.move(amt);
+		}
+	}
 }
